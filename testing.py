@@ -1,9 +1,8 @@
 import data
 import requests
 
-def main():
-    testData = data.Data()
-    testStockData = testData.getStockData("MSFT")
-    testNewsData = testData.getNewsData()
-    testData.getDailyChange(testStockData)
-main()
+def getInfoDict():
+    testStockData = data.getStockData("AAPL")
+    testNewsData = data.getNewsData("Apple")
+    dailyChange = data.getDailyChange(testStockData)
+    return(data.getDailyNews(dailyChange, testNewsData))
