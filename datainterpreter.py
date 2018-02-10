@@ -1,3 +1,5 @@
+import hackbu.data as data
+
 class KeywordCollection:
     def __init__(self, dictionary):
         self.dictionary = dictionary
@@ -65,7 +67,6 @@ class Keyword:
 
 
 def main():
-    list = ["and", "he", "potatoed", "for", "for", "potato"]
-    print(KeywordCollection.filterGarbageWords(list))
+    example_dictionary = data.d
 
 main()
