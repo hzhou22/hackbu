@@ -7,4 +7,6 @@ Stock APIs:
    Key: B5V6SC389WVZJDZG
 
 News APIs:
- - ???
+ - News API
+   https://newsapi.org/docs/get-started#search
+   Key: f5f6bcd710b04091bab2fa73f226d1e5
