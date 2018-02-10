@@ -37,3 +37,9 @@ def getDailyNews(daily_change_data, json_news_data):
                 article_dict["description"] = newsArticle["description"]
                 final_dict[day]["articles"].append(article_dict)
     return final_dict
+
+def getInfoDict():                                                                                                      # Drew: add string input and
+    testStockData = getStockData("AAPL")
+    testNewsData = getNewsData("Apple")
+    dailyChange = getDailyChange(testStockData)
+    return(getDailyNews(dailyChange, testNewsData))

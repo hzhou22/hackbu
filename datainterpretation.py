@@ -45,9 +45,12 @@ class KeywordCollection:
         return flag
 
     def findIndex(self, word):
-        for i in self.keywords:
-            if self.keywords[i] == word:
+        for i in range(len(self.keywords)):
+            if self.keywords[i].getWord() == word:
                 return i
+
+    def getKeywords(self):
+        return self.keywords
 
 
 class Keyword:
@@ -59,6 +62,9 @@ class Keyword:
     def getWord(self):
         return self.word
 
+    def getWeight(self):
+        return self.weight
+
     def addAppearance(self, value):
         self.appearances.append(value)
 
@@ -67,6 +73,9 @@ class Keyword:
 
 
 def main():
-    example_dictionary = data.d
+    exampleDictionary = data.getInfoDict()
+    myCollection = KeywordCollection(exampleDictionary)
+    for keyword in myCollection.getKeywords():
+        print(keyword.getWord(), keyword.getWeight())
 
 main()
