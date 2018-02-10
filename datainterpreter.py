@@ -13,8 +13,8 @@ class KeywordCollection:
                 if dictionary[date]["articles"][i]["description"] is not None:
                     description_words = dictionary[date]["articles"][i]["title"].split()
                 all_words = title_words + description_words
-                filtered_words =                                                                                        # Add a filter function.
-                for word in all_words:
+                filtered_words = self.filterGarbageWords(all_words)
+                for word in filtered_words:
                     if self.isDuplicate(word):
                         self.keywords[self.findIndex(word)].addAppearance(value_to_assign)
                     else:
@@ -23,12 +23,17 @@ class KeywordCollection:
             keyword.calculateWeight()
 
     def filterGarbageWords(self, words):
-        garbage_words = ["for", "and", "nor", "but", "or", "yet", "so",
+        garbage_words = ["for", "and", "nor", "but", "or", "yet", "so",                                                 # Add more garbage!
                          "he", "she", "it", "them", "they"]
-        for word in words:
+        i_offset = 0
+        for i in range(len(words)):
             for garbage_word in garbage_words:
-                if word == garbage_word:
-                    words.remove()
+                if garbage_word == words[i - i_offset]:
+                    words.pop(i - i_offset)
+                    i_offset += 1
+                    break
+
+        return words
 
     def isDuplicate(self, word):
         flag = False
@@ -57,3 +62,10 @@ class Keyword:
 
     def calculateWeight(self):
         self.weight = sum(self.appearances)/len(self.appearances)
+
+
+def main():
+    list = ["and", "he", "potatoed", "for", "for", "potato"]
+    print(KeywordCollection.filterGarbageWords(list))
+
+main()
