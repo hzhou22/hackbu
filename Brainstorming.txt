@@ -1,0 +1,10 @@
+Stock APIs:
+ - IEX
+   https://iextrading.com/developer/docs/#roadmap
+
+ - Alpha Vantage:
+   https://www.alphavantage.co/documentation/
+   Key: B5V6SC389WVZJDZG
+
+News APIs:
+ - ???
