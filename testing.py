@@ -10,6 +10,6 @@ def main():
     #print(newsData)
     asdf = data.getDailyChange(apple)
     #print(asdf)
-    print(data.getInfoDict("AAPL"))
+    #print(data.getInfoDict("AAPL"))
 
 main()

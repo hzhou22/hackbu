@@ -52,8 +52,8 @@ class NN:
         self.co = makeMatrix(self.nh, self.no)
 
     def update(self, inputs):
- #      ''' if len(inputs) != self.ni-1:
- #          raise ValueError('Different from # of nodes in input layer!')'''
+ #      if len(inputs) != self.ni-1:
+ #      raise ValueError('Different from # of nodes in input layer!')'''
 
         # Activate input later
         for i in range(self.ni-1):
@@ -148,42 +148,42 @@ class NN:
  #   def getweights2(self):
  #      return self.wo
           
-def demo():
-    # a demo
-    test = [
-        [[1,0], [1]],
-        [[0,1], [1]],
-        [[1,0], [1]],
-        [[1,1], [0]],
-        [[0,0], [1]],
-        [[0,1], [1]],
-        [[1,0], [1]],
-        [[1,1], [0]]
-    ]
-    predict = [
-        [[1,0], [1]]
-        ]
-    training = [
-        [[0,0], [1]],
-        [[0,1], [1]],
-        [[1,0], [1]],
-        [[1,1], [0]]
-    ]
+    def demo(avgImpact, numArticles, stkChange, testOrTrain):
+        # a demo
+        if testOrTrain == True:
+            test = [
+                [[avgImpacttest,numArticlestest], [stkChangetest]],
+                #[[0,1], [1]],
+                #[[1,0], [1]],
+                #[[1,1], [0]],
+                #[[0,0], [1]],
+                #[[0,1], [1]],
+                #[[1,0], [1]],
+                #[[1,1], [0]]
+            ]
+            # test data with testing pattern
+            n.test(test)
+        else:
+            training = [
+    
+            [[avgImpacttrain,numArticlestrain], [stkChangetrain]],
+            #[[0,1], [1]],
+            #[[1,0], [1]],
+            #[[1,1], [0]]
+            ]
+            n.train(training)
+        
+    def finalTest(avgImpact, numArticles):
+        predict = [
+            [[avgImpact, numArticles], [0]]
+            ]
+        n.test(predict)
 
-    # create a neural network: input, hidden output layer number of nodes
-    n = NN(2, 3, 1)
-    # train data with training pattern
-    n.train(training)
-    # test data with testing pattern
-    n.test(test)
-    # Weights after training
-    n.weights()
-    n.test(predict)
 
     
     
-if __name__ == '__main__':
-    demo()
+#if __name__ == '__main__':
+    #demo()
     
     
  
