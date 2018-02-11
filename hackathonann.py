@@ -1,6 +1,5 @@
 import math
 import random
-'''import string'''
 
 random.seed(0)
 
@@ -147,29 +146,18 @@ class NN:
         # a demo
         if testOrTrain == True:
             test = [
-                [[avgImpact,numArticles], [stkChange]],
-                #[[0,1], [1]],
-                #[[1,0], [1]],
-                #[[1,1], [0]],
-                #[[0,0], [1]],
-                #[[0,1], [1]],
-                #[[1,0], [1]],
-                #[[1,1], [0]]
+                [[avgImpact,numArticles], [stkChange]]
             ]
             # test data with testing pattern
             print(self.test(test))
+
         else:
             training = [
-
-            [[avgImpact,numArticles], [stkChange]],
-            #[[0,1], [1]],
-            #[[1,0], [1]],
-            #[[1,1], [0]]
+            [[avgImpact,numArticles], [stkChange]]
             ]
             print(self.train(training))
 
     def finalTest(self, avgImpact, numArticles):
-        print("======Final=======")
         predict = [
             [[avgImpact, numArticles], [0]]
             ]
