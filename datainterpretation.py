@@ -15,7 +15,7 @@ class KeywordCollection:
                 title_words = self.dictionary[date]["articles"][i]["title"].split()
                 description_words = []
                 if self.dictionary[date]["articles"][i]["description"] is not None:
-                    description_words = self.dictionary[date]["articles"][i]["title"].split()
+                    description_words = self.dictionary[date]["articles"][i]["description"].split()
                 all_words = title_words + description_words
                 filtered_words = self.filterGarbageWords(all_words)
                 for word in filtered_words:
