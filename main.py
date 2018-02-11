@@ -6,7 +6,7 @@ import hackathonann
 class gui(Frame):
     def __init__(self):
         super().__init__(root)
-        self.winfo_toplevel().title("StockPredict")
+        self.winfo_toplevel().title("Prophecy")
         self.main_frame = Frame(root)
 
         self.stock_ticker = StringVar()
@@ -20,9 +20,9 @@ class gui(Frame):
         self.main_frame = Frame(root)
         self.main_frame.grid()
 
-        title_label = Label(self.main_frame, text="Welcome to StockPredict!",
+        title_label = Label(self.main_frame, text="Welcome to Prophecy!",
                             padx=20, pady=20, font=(None, 20))
-        title_label.grid(row=0, columnspan=3)
+        title_label.grid(row=0, columnspan=2)
 
         stock_screen_button = Button(self.main_frame, text="Predict Stock Change")
         stock_screen_button.bind("<Button-1>", self.open_stock_screen)
@@ -31,10 +31,6 @@ class gui(Frame):
         headline_screen_button = Button(self.main_frame, text="Predict Headline Effect")
         headline_screen_button.bind("<Button-1>", self.open_headline_screen)
         headline_screen_button.grid(row=1, column=1)
-
-        word_screen_button = Button(self.main_frame, text="View Effective Words")
-        word_screen_button.bind("<Button-1>", self.open_word_screen)
-        word_screen_button.grid(row=1, column=2)
 
     def open_stock_screen(self, event=None):
         self.main_frame.destroy()
@@ -176,56 +172,7 @@ class gui(Frame):
             else:
                 prediction_string += "drastically decrease the value of " + self.stock_ticker.get() + "."
 
-            prediction_label = Label(self.main_frame, text=prediction_string)
-            prediction_label.grid(row=0, column=0, columnspan=2)
-
-            back_to_menu_button = Button(self.main_frame, text="Back to Menu")
-            back_to_menu_button.bind("<Button-1>", self.open_main_menu)
-            back_to_menu_button.grid(row=1, column=0)
-
-            new_headline_button = Button(self.main_frame, text="Try Another Headline")
-            new_headline_button.bind("<Button-1>", self.open_headline_screen)
-            new_headline_button.grid(row=1, column=1)
-        except:
-            self.stock_ticker = StringVar()
-            self.open_headline_screen()
-
-    def open_word_screen(self, event=None):
-        self.main_frame.destroy()
-        self.main_frame = Frame(root)
-        self.main_frame.grid()
-
-        enter_stock_label = Label(self.main_frame, text="Enter Stock Ticker: ")
-        enter_stock_label.grid(row=0, column=0)
-
-        enter_stock_entry = Entry(self.main_frame, textvariable=self.stock_ticker)
-        enter_stock_entry.grid(row=0, column=1)
-
-        back_button = Button(self.main_frame, text="Back")
-        back_button.bind("<Button-1>", self.open_main_menu)
-        back_button.grid(row=1, column=0)
-
-        calculate_headline_button = Button(self.main_frame, text="Enter")
-        calculate_headline_button.bind("<Button-1>", self.open_words_list)
-        calculate_headline_button.grid(row=1, column=1)
-
-    def open_words_list(self, event=None):
-        try:
-            self.stock_ticker.set(self.stock_ticker.get().upper())
-            stockInput = self.stock_ticker.get()
-            stockInfoDict = data.getInfoDict(stockInput)
-            dataCollection = datainterpretation.KeywordCollection(stockInfoDict)
-
-            top_five_positive = []
-
-
-            for keyword in dataCollection.getKeywords():
-                if word.lower() == keyword.getWord():
-                    headline_impact += keyword.getImpact()
-
-
-
-            prediction_label = Label(self.main_frame, text=prediction_string)
+            prediction_label = Label(self.main_frame, text=prediction_string, font=(None, 20))
             prediction_label.grid(row=0, column=0, columnspan=2)
 
             back_to_menu_button = Button(self.main_frame, text="Back to Menu")
