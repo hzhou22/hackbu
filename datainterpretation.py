@@ -1,19 +1,21 @@
 import hackbu.data as data
 
+
 class KeywordCollection:
     def __init__(self, dictionary):
         self.dictionary = dictionary
         self.keywords = []
-        self.eatDictionary(dictionary)
+        self.eatDictionary()
 
-    def eatDictionary(self, dictionary):
-        for date in dictionary:
-            value_to_assign = dictionary[date]["daily_change"]
-            for i in range(len(dictionary[date]["articles"])):
-                title_words = dictionary[date]["articles"][i]["title"].split()
+    def eatDictionary(self):
+        for date in self.dictionary:
+            value_to_assign = self.dictionary[date]["daily_change"]                                                          # do per article value
+                                                                                                                        #
+            for i in range(len(self.dictionary[date]["articles"])):
+                title_words = self.dictionary[date]["articles"][i]["title"].split()
                 description_words = []
-                if dictionary[date]["articles"][i]["description"] is not None:
-                    description_words = dictionary[date]["articles"][i]["title"].split()
+                if self.dictionary[date]["articles"][i]["description"] is not None:
+                    description_words = self.dictionary[date]["articles"][i]["title"].split()
                 all_words = title_words + description_words
                 filtered_words = self.filterGarbageWords(all_words)
                 for word in filtered_words:
@@ -77,5 +79,6 @@ def main():
     myCollection = KeywordCollection(exampleDictionary)
     for keyword in myCollection.getKeywords():
         print(keyword.getWord(), keyword.getWeight())
+
 
 main()
