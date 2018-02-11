@@ -1,4 +1,4 @@
-import hackbu.data as data
+import data
 
 class KeywordCollection:
     def __init__(self, dictionary):
@@ -30,13 +30,15 @@ class KeywordCollection:
         garbage_words = ["for", "and", "nor", "but", "or", "yet", "so",
                          "he", "she", "it", "them", "they"
                          "i", "you", "we", "us"]
-        punctuations = ['.', ',', ':', ';', '"', "'"]
+        punctuations = ['.', ',', ':', ';', '"', "'", "'s"]
         i_offset = 0
         for i in range(len(words)):
             current_word = words[i - i_offset].lower()
 
             for punctuation in punctuations:
-                current_word = current_word.replace(punctuation, "")
+                current_word = current_word.replace(punctuation, '')
+
+            words[i - i_offset] = current_word
 
             for garbage_word in garbage_words:
                 if garbage_word == words[i - i_offset]:
@@ -82,7 +84,7 @@ class Keyword:
 
 
 def main():
-    exampleDictionary = data.getInfoDict()
+    exampleDictionary = data.getInfoDict("TSLA")
     myCollection = KeywordCollection(exampleDictionary)
     most_powerful_word = ""
     biggest = Keyword("word", 0)
@@ -91,5 +93,14 @@ def main():
             biggest = keyword
         print(keyword.getWord(), keyword.getWeight())
     print(biggest.getWord(), biggest.getWeight())
+
+    string = "Put putato thank. ..  ' eat cheese"
+    print(string)
+    for punct in ['.', "'"]:
+        string = string.replace(punct, '')
+
+        print(string)
+
+
 
 main()
