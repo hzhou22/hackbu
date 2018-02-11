@@ -9,7 +9,7 @@ def main():
     dataCollection = datainterpretation.KeywordCollection(stockInfoDict)
     dayDictionary = dataCollection.getDayDictionary()
     print(dayDictionary)
-
+    
     neural_network = hackathonann.NN(2, 3, 1)
 
     i = 0
