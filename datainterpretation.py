@@ -28,7 +28,13 @@ class KeywordCollection:
     def refine(self, words):
         garbage_words = ["for", "and", "nor", "but", "or", "yet", "so",
                          "he", "she", "it", "them", "they"
-                         "i", "you", "we", "us"]
+                         "i", "you", "we", "us", "a", "my", "to", "the",
+                         "its", "of", "in", "that", "what", "do", "as", "me",
+                         "was", "him", "this", "isnt", "that", "thats", "is",
+                         "has", "be", "will", "an", "are", "like", "there", "either",
+                         "or", "but", "also", "neither", "both", "whether", "rather",
+                         "thing", "ive", "if," "their", "our", "your", "with"]
+
         punctuations = ['.', ',', ':', ';', '"', "'", "’", "“", "”" "'s", "(", ")", "?", "!", "…"]
         i_offset = 0
         for i in range(len(words)):
@@ -63,6 +69,9 @@ class KeywordCollection:
 
     def getKeywords(self):
         return self.keywords
+
+    def articleValue(self):
+        
 
 
 class Keyword:
