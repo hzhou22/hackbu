@@ -118,7 +118,7 @@ class NN:
 
     def test(self, patterns):
         for p in patterns:
-            print(p[0], '->', self.update(p[0]))
+            return self.update(p[0])
 
     def weights(self):
         print('Weights of input layer:')
@@ -140,7 +140,7 @@ class NN:
                 self.update(inputs)
                 error = error + self.backPropagate(targets, N, M)
             if i % 100 == 0:
-                print('error %-.5f' % error)
+                return 'error %-.5f' % error
 
 
     def demo(self, avgImpact, numArticles, stkChange, testOrTrain):
@@ -157,7 +157,7 @@ class NN:
                 #[[1,1], [0]]
             ]
             # test data with testing pattern
-            self.test(test)
+            print(self.test(test))
         else:
             training = [
 
@@ -166,14 +166,14 @@ class NN:
             #[[1,0], [1]],
             #[[1,1], [0]]
             ]
-            self.train(training)
+            print(self.train(training))
 
     def finalTest(self, avgImpact, numArticles):
         print("======Final=======")
         predict = [
             [[avgImpact, numArticles], [0]]
             ]
-        self.test(predict)
+        return self.test(predict)
 
 
 
