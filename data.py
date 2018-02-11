@@ -20,7 +20,6 @@ def getArticlesList(stock_name):
             'sortBy=popularity&'
            'apiKey=f5f6bcd710b04091bab2fa73f226d1e5')
         json_news_data = news_data.json()
-        print(json_news_data)
         complete_articles_list += json_news_data["articles"]
     return complete_articles_list
 
