@@ -9,7 +9,6 @@ class KeywordCollection:
     def eatDictionary(self):
         for date in self.dictionary:
             value_to_assign = self.dictionary[date]["daily_change"]                                                          # do per article value
-                                                                                                                        #
             for i in range(len(self.dictionary[date]["articles"])):
                 title_words = self.dictionary[date]["articles"][i]["title"].split()
                 description_words = []
@@ -86,7 +85,7 @@ class Keyword:
 
 
 def main():
-    exampleDictionary = data.getInfoDict("AAPL")
+    exampleDictionary = data.getInfoDict("TSLA")
     myCollection = KeywordCollection(exampleDictionary)
     most_powerful_word = ""
     biggest = Keyword("word", 0)
@@ -95,6 +94,7 @@ def main():
             biggest = keyword
         print(keyword.getWord(), keyword.getWeight())
     print(biggest.getWord(), biggest.getWeight())
+    print(len(myCollection.getKeywords()))
 
 
 
