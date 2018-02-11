@@ -30,7 +30,7 @@ class KeywordCollection:
         garbage_words = ["for", "and", "nor", "but", "or", "yet", "so",
                          "he", "she", "it", "them", "they"
                          "i", "you", "we", "us"]
-        punctuations = ['.', ',', ':', ';', '"', "'", "'s"]
+        punctuations = ['.', ',', ':', ';', '"', "'", "’", "“", "”" "'s", "(", ")", "?", "!", "…"]
         i_offset = 0
         for i in range(len(words)):
             current_word = words[i - i_offset].lower()
@@ -47,6 +47,8 @@ class KeywordCollection:
                     break
 
         return words
+
+
 
     def isDuplicate(self, word):
         flag = False
@@ -84,7 +86,7 @@ class Keyword:
 
 
 def main():
-    exampleDictionary = data.getInfoDict("TSLA")
+    exampleDictionary = data.getInfoDict("AAPL")
     myCollection = KeywordCollection(exampleDictionary)
     most_powerful_word = ""
     biggest = Keyword("word", 0)
@@ -93,13 +95,6 @@ def main():
             biggest = keyword
         print(keyword.getWord(), keyword.getWeight())
     print(biggest.getWord(), biggest.getWeight())
-
-    string = "Put putato thank. ..  ' eat cheese"
-    print(string)
-    for punct in ['.', "'"]:
-        string = string.replace(punct, '')
-
-        print(string)
 
 
 
