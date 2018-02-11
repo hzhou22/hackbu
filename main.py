@@ -14,6 +14,7 @@ def main():
     neural_network = hackathonann.NN(2, 3, 1)
 
     i = 0
+    today = None
     for day in dayDictionary:
         if i == 0:
             today = dayDictionary[day]
