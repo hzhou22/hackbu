@@ -12,6 +12,8 @@ def getNewsData(stock_name):
     news_data = requests.get('https://newsapi.org/v2/everything?'
         'q='+stock_name+'&'
         'from=2017-09-20&'
+        'language=en&'
+        'pageSize=100&'
         'sortBy=popularity&'
        'apiKey=f5f6bcd710b04091bab2fa73f226d1e5')
     json_news_data = news_data.json()
