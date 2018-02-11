@@ -216,7 +216,8 @@ class gui(Frame):
             stockInfoDict = data.getInfoDict(stockInput)
             dataCollection = datainterpretation.KeywordCollection(stockInfoDict)
 
-            top_five_positive
+            top_five_positive = []
+
 
             for keyword in dataCollection.getKeywords():
                 if word.lower() == keyword.getWord():
