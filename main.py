@@ -8,8 +8,16 @@ def main():
     stockInfoDict = data.getInfoDict(stockInput)
     dataCollection = datainterpretation.KeywordCollection(stockInfoDict)
     dayDictionary = dataCollection.getDayDictionary()
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+=======
+    print(dayDictionary)
+    
+>>>>>>> 3b4ee2d49fcb80bf5adf8b27c0acd342af5d44c8
     neural_network = hackathonann.NN(2, 3, 1)
+>>>>>>> c2aa4f13158d52751b0a716e437b76cfedcb5a95
 
     i = 0
     for day in dayDictionary:

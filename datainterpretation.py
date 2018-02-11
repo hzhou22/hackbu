@@ -71,10 +71,12 @@ class KeywordCollection:
     def getDayDictionary(self):
         dict_return = {}
         for date in self.dictionary:
+            dayStockChange = self.dictionary[date]["daily_change"]
             dayTotalImpact = 0
             numberOfArticles = len(self.dictionary[date]["articles"])
             if numberOfArticles != 0:
                 for i in range(len(self.dictionary[date]["articles"])):
+
                     articleImpact = 0
                     wordsOfArticle = (self.dictionary[date]["articles"][i]["title"]
                                      + self.dictionary[date]["articles"][i]["description"]).split()
@@ -83,9 +85,9 @@ class KeywordCollection:
                             if word == keyword.getWord():
                                 articleImpact += keyword.getImpact()
                     dayTotalImpact += articleImpact
-                dayAverageImpact = dayTotalImpact/numberOfArticles
-                dict_return[date] = {"impact": dayAverageImpact, "number_of_articles": numberOfArticles}
-
+                dict_return[date] = {"impact": dayTotalImpact,
+                                     "number_of_articles": numberOfArticles,
+                                     "daily_change": dayStockChange}
         return dict_return
 
 
