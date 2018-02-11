@@ -35,7 +35,7 @@ class NN:
         self.ai = [1.0]*self.ni
         self.ah = [1.0]*self.nh
         self.ao = [1.0]*self.no
-        
+
         # Weights
         self.wi = makeMatrix(self.ni, self.nh)
         self.wo = makeMatrix(self.nh, self.no)
@@ -124,7 +124,7 @@ class NN:
         print('Weights of input layer:')
         for i in range(self.ni):
             print(self.wi[i])
-       
+
         print('Weights of output layer:')
         for j in range(self.nh):
             print(self.wo[j])
@@ -144,11 +144,11 @@ class NN:
 
  #   def getweights1(self):
  #       return self.wi
-    
+
  #   def getweights2(self):
  #      return self.wo
-          
-    def demo(avgImpact, numArticles, stkChange, testOrTrain):
+
+    def demo(self, avgImpact, numArticles, stkChange, testOrTrain):
         # a demo
         if testOrTrain == True:
             test = [
@@ -162,28 +162,25 @@ class NN:
                 #[[1,1], [0]]
             ]
             # test data with testing pattern
-            n.test(test)
+            self.test(test)
         else:
             training = [
-    
+
             [[avgImpacttrain,numArticlestrain], [stkChangetrain]],
             #[[0,1], [1]],
             #[[1,0], [1]],
             #[[1,1], [0]]
             ]
-            n.train(training)
-        
-    def finalTest(avgImpact, numArticles):
+            self.train(training)
+
+    def finalTest(self, avgImpact, numArticles):
         predict = [
             [[avgImpact, numArticles], [0]]
             ]
-        n.test(predict)
+        self.test(predict)
 
 
-    
-    
+
+
 #if __name__ == '__main__':
     #demo()
-    
-    
- 
