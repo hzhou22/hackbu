@@ -142,17 +142,12 @@ class NN:
             if i % 100 == 0:
                 print('error %-.5f' % error)
 
- #   def getweights1(self):
- #       return self.wi
-
- #   def getweights2(self):
- #      return self.wo
 
     def demo(self, avgImpact, numArticles, stkChange, testOrTrain):
         # a demo
         if testOrTrain == True:
             test = [
-                [[avgImpacttest,numArticlestest], [stkChangetest]],
+                [[avgImpact,numArticles], [stkChange]],
                 #[[0,1], [1]],
                 #[[1,0], [1]],
                 #[[1,1], [0]],
@@ -166,7 +161,7 @@ class NN:
         else:
             training = [
 
-            [[avgImpacttrain,numArticlestrain], [stkChangetrain]],
+            [[avgImpact,numArticles], [stkChange]],
             #[[0,1], [1]],
             #[[1,0], [1]],
             #[[1,1], [0]]
@@ -174,6 +169,7 @@ class NN:
             self.train(training)
 
     def finalTest(self, avgImpact, numArticles):
+        print("======Final=======")
         predict = [
             [[avgImpact, numArticles], [0]]
             ]
