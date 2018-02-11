@@ -108,29 +108,11 @@ class Keyword:
         self.appearances.append(value)
 
     def calculateWeight(self):
-<<<<<<< HEAD
         self.impact = sum(self.appearances) / len(self.appearances)
 
 
 def main():
     exampleDict = data.getInfoDict()
     exampleKeywordCollection = KeywordCollection(exampleDict)
-=======
-        self.impact = sum(self.appearances)/len(self.appearances)
 
 
-def main():
-    exampleDictionary = data.getInfoDict("AAPL")
-    myCollection = KeywordCollection(exampleDictionary)
-    most_powerful_word = ""
-    biggest = Keyword("word", 0)
-    for keyword in myCollection.getKeywords():
-        if abs(keyword.getWeight()) > abs(biggest.getWeight()):
-            biggest = keyword
-        print(keyword.getWord(), keyword.getWeight())
-    print(biggest.getWord(), biggest.getWeight())
-
-
-
-#main()
->>>>>>> e48a396a95444af98fc8435c3ef9d775677f75b3
