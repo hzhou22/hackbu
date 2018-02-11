@@ -109,3 +109,8 @@ class Keyword:
 
     def calculateWeight(self):
         self.impact = sum(self.appearances) / len(self.appearances)
+
+
+def main():
+    exampleDict = data.getInfoDict()
+    exampleKeywordCollection = KeywordCollection(exampleDict)
