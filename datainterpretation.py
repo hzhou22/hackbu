@@ -7,9 +7,7 @@ class KeywordCollection:
 
         self.eatDictionary()
 
-
     def eatDictionary(self):
-
         for date in self.dictionary:
             value_to_assign = self.dictionary[date]["daily_change"]
             for i in range(len(self.dictionary[date]["articles"])):
@@ -72,7 +70,6 @@ class KeywordCollection:
 
     def getDayDictionary(self):
         dict_return = {}
-
         for date in self.dictionary:
             dayTotalImpact = 0
             numberOfArticles = len(self.dictionary[date]["articles"])
@@ -109,10 +106,3 @@ class Keyword:
 
     def calculateWeight(self):
         self.impact = sum(self.appearances) / len(self.appearances)
-
-
-def main():
-    exampleDict = data.getInfoDict()
-    exampleKeywordCollection = KeywordCollection(exampleDict)
-
-
