@@ -6,4 +6,6 @@ def main():
     stockInput = input("Enter a stock ticker: ")
     stockInfoDict = data.getInfoDict(stockInput)
     dataCollection = datainterpretation.KeywordCollection(stockInfoDict)
+    dayDictionary = dataCollection.getDayDictionary()
+
 main()

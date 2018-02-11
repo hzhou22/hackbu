@@ -6,9 +6,10 @@ def main():
     #print(apple)
     appleName = data.getCompanyName("AAPL")
     #print(appleName)
-    newsData = data.getNewsData(appleName)
+    newsData = data.getArticlesList(appleName)
     #print(newsData)
     asdf = data.getDailyChange(apple)
     #print(asdf)
     print(data.getInfoDict("AAPL"))
+
 main()
