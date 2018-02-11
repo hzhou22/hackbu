@@ -1,4 +1,4 @@
-import hackbu.data as data
+import data
 
 class KeywordCollection:
     def __init__(self, dictionary):
@@ -37,7 +37,8 @@ class KeywordCollection:
 
             for punctuation in punctuations:
                 current_word = current_word.replace(punctuation, '')
-                print(current_word)
+
+            words[i - i_offset] = current_word
 
             for garbage_word in garbage_words:
                 if garbage_word == words[i - i_offset]:
