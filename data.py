@@ -10,7 +10,7 @@ def getStockData(stock_name):
 
 def getArticlesList(stock_name):
     complete_articles_list = []
-    for i in range(3):
+    for i in range(5):
         news_data = requests.get('https://newsapi.org/v2/everything?'
             'q='+stock_name+'&'
             'from=2017-11-10&'
