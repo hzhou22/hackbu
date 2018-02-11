@@ -1,17 +1,21 @@
+import hackbu.data as data
+
+
 class KeywordCollection:
     def __init__(self, dictionary):
         self.dictionary = dictionary
         self.keywords = []
-        self.eatDictionary(dictionary)
+        self.eatDictionary()
 
-    def eatDictionary(self, dictionary):
-        for date in dictionary:
-            value_to_assign = dictionary[date]["daily_change"]
-            for i in range(len(dictionary[date]["articles"])):
-                title_words = dictionary[date]["articles"][i]["title"].split()
+    def eatDictionary(self):
+        for date in self.dictionary:
+            value_to_assign = self.dictionary[date]["daily_change"]                                                          # do per article value
+                                                                                                                        #
+            for i in range(len(self.dictionary[date]["articles"])):
+                title_words = self.dictionary[date]["articles"][i]["title"].split()
                 description_words = []
-                if dictionary[date]["articles"][i]["description"] is not None:
-                    description_words = dictionary[date]["articles"][i]["title"].split()
+                if self.dictionary[date]["articles"][i]["description"] is not None:
+                    description_words = self.dictionary[date]["articles"][i]["description"].split()
                 all_words = title_words + description_words
                 filtered_words = self.filterGarbageWords(all_words)
                 for word in filtered_words:
@@ -43,9 +47,12 @@ class KeywordCollection:
         return flag
 
     def findIndex(self, word):
-        for i in self.keywords:
-            if self.keywords[i] == word:
+        for i in range(len(self.keywords)):
+            if self.keywords[i].getWord() == word:
                 return i
+
+    def getKeywords(self):
+        return self.keywords
 
 
 class Keyword:
@@ -57,6 +64,9 @@ class Keyword:
     def getWord(self):
         return self.word
 
+    def getWeight(self):
+        return self.weight
+
     def addAppearance(self, value):
         self.appearances.append(value)
 
@@ -65,7 +75,10 @@ class Keyword:
 
 
 def main():
-    list = ["and", "he", "potatoed", "for", "for", "potato"]
-    print(KeywordCollection.filterGarbageWords(list))
+    exampleDictionary = data.getInfoDict()
+    myCollection = KeywordCollection(exampleDictionary)
+    for keyword in myCollection.getKeywords():
+        print(keyword.getWord(), keyword.getWeight())
+
 
 main()
