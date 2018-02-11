@@ -38,8 +38,19 @@ def getDailyNews(daily_change_data, json_news_data):
                 final_dict[day]["articles"].append(article_dict)
     return final_dict
 
-def getInfoDict():                                                                                                      # Drew: add string input and
-    testStockData = getStockData("AAPL")
-    testNewsData = getNewsData("Apple")
+def getInfoDict(ticker):                                                                                                      # Drew: add string input and
+    testStockData = getStockData(ticker)
+    testCompanyName = getCompanyName(testStockData)
+    testNewsData = getNewsData(testCompanyName)
     dailyChange = getDailyChange(testStockData)
-    return(getDailyNews(dailyChange, testNewsData))
+    return getDailyNews(dailyChange, testNewsData)
+
+def getCompanyName(ticker):
+    companyNames = requests.get("http://d.yimg.com/autoc.finance.yahoo.com/autoc?query={}&region=1&lang=en".format(ticker)).json()
+    removeList = ['Corporation', 'Inc.', 'Incorporated', 'Corp.', 'Inc', 'Corp', ', ']
+    for company in companyNames['ResultSet']['Result']:
+        if company['symbol'] == ticker:
+            return_name = company['name']
+            for suffix in removeList:
+                return_name = return_name.replace(suffix, "")
+            return return_name
