@@ -8,16 +8,21 @@ def getStockData(stock_name):
     json_stock_data = stock_data.json()
     return json_stock_data
 
-def getNewsData(stock_name):
-    news_data = requests.get('https://newsapi.org/v2/everything?'
-        'q='+stock_name+'&'
-        'from=2017-09-20&'
-        'language=en&'
-        'pageSize=100&'
-        'sortBy=popularity&'
-       'apiKey=f5f6bcd710b04091bab2fa73f226d1e5')
-    json_news_data = news_data.json()
-    return json_news_data
+def getArticlesList(stock_name):
+    complete_articles_list = []
+    for i in range(3):
+        news_data = requests.get('https://newsapi.org/v2/everything?'
+            'q='+stock_name+'&'
+            'from=2017-11-10&'
+            'language=en&'
+            'pageSize=100&'
+            'page='+str(i+1)+'&'
+            'sortBy=popularity&'
+           'apiKey=f5f6bcd710b04091bab2fa73f226d1e5')
+        json_news_data = news_data.json()
+        print(json_news_data)
+        complete_articles_list += json_news_data["articles"]
+    return complete_articles_list
 
 def getDailyChange(stock_data):
     daily_change_data = {}
@@ -25,25 +30,25 @@ def getDailyChange(stock_data):
         daily_change_data[day] = ((float(stock_data["Time Series (Daily)"][day]["1. open"]) - float(stock_data["Time Series (Daily)"][day]["4. close"])) / float(stock_data["Time Series (Daily)"][day]["1. open"]))
     return daily_change_data
 
-def getDailyNews(daily_change_data, json_news_data):
+def getDailyNews(daily_change_data, articles_list):
     final_dict = {}
     for day in daily_change_data:
         daily_change = daily_change_data[day]
         final_dict[day] = {}
         final_dict[day]["daily_change"] = daily_change
         final_dict[day]["articles"] = []
-        for newsArticle in json_news_data["articles"]:
-            if(newsArticle["publishedAt"][:10] == day):
+        for article in articles_list:
+            if(article["publishedAt"][:10] == day):
                 article_dict = {}
-                article_dict["title"] = newsArticle["title"]
-                article_dict["description"] = newsArticle["description"]
+                article_dict["title"] = article["title"]
+                article_dict["description"] = article["description"]
                 final_dict[day]["articles"].append(article_dict)
     return final_dict
 
 def getInfoDict(ticker):
     testStockData = getStockData(ticker)
     testCompanyName = getCompanyName(ticker)
-    testNewsData = getNewsData(testCompanyName)
+    testNewsData = getArticlesList(testCompanyName)
     dailyChange = getDailyChange(testStockData)
     return getDailyNews(dailyChange, testNewsData)
 

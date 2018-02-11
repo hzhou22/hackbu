@@ -8,7 +8,7 @@ random.seed(0)
 def rand(a, b):
     return (b-a)*random.random() + a
 
-# Generate matrix [I,J]，Default is zeros
+# Generate matrix [I,J]
 def makeMatrix(I, J, fill=0.0):
     m = []
     for i in range(I):
@@ -142,13 +142,11 @@ class NN:
             if i % 100 == 0:
                 print('error %-.5f' % error)
 
-    @staticmethod
-    def getweights1(self):
-        return self.wi
+ #   def getweights1(self):
+ #       return self.wi
     
-    @staticmethod
-    def getweights2(self):
-        return self.wo
+ #   def getweights2(self):
+ #      return self.wo
           
 def demo():
     # a demo
@@ -162,6 +160,9 @@ def demo():
         [[1,0], [1]],
         [[1,1], [0]]
     ]
+    predict = [
+        [[1,0], [1]]
+        ]
     training = [
         [[0,0], [1]],
         [[0,1], [1]],
@@ -177,6 +178,7 @@ def demo():
     n.test(test)
     # Weights after training
     n.weights()
+    n.test(predict)
 
     
     
