@@ -1,6 +1,5 @@
 import hackbu.data as data
 
-
 class KeywordCollection:
     def __init__(self, dictionary):
         self.dictionary = dictionary
@@ -17,20 +16,28 @@ class KeywordCollection:
                 if self.dictionary[date]["articles"][i]["description"] is not None:
                     description_words = self.dictionary[date]["articles"][i]["description"].split()
                 all_words = title_words + description_words
-                filtered_words = self.filterGarbageWords(all_words)
+                filtered_words = self.refine(all_words)
                 for word in filtered_words:
                     if self.isDuplicate(word):
+                        print("Found duplicate", word)
                         self.keywords[self.findIndex(word)].addAppearance(value_to_assign)
                     else:
                         self.keywords.append(Keyword(word, value_to_assign))
         for keyword in self.keywords:
             keyword.calculateWeight()
 
-    def filterGarbageWords(self, words):
-        garbage_words = ["for", "and", "nor", "but", "or", "yet", "so",                                                 # Add more garbage!
-                         "he", "she", "it", "them", "they"]
+    def refine(self, words):
+        garbage_words = ["for", "and", "nor", "but", "or", "yet", "so",
+                         "he", "she", "it", "them", "they"
+                         "i", "you", "we", "us"]
+        punctuations = ['.', ',', ':', ';', '"', "'"]
         i_offset = 0
         for i in range(len(words)):
+            current_word = words[i - i_offset].lower()
+
+            for punctuation in punctuations:
+                current_word = current_word.replace(punctuation, "")
+
             for garbage_word in garbage_words:
                 if garbage_word == words[i - i_offset]:
                     words.pop(i - i_offset)
@@ -77,8 +84,12 @@ class Keyword:
 def main():
     exampleDictionary = data.getInfoDict()
     myCollection = KeywordCollection(exampleDictionary)
+    most_powerful_word = ""
+    biggest = Keyword("word", 0)
     for keyword in myCollection.getKeywords():
+        if abs(keyword.getWeight()) > abs(biggest.getWeight()):
+            biggest = keyword
         print(keyword.getWord(), keyword.getWeight())
-
+    print(biggest.getWord(), biggest.getWeight())
 
 main()
