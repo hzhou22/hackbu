@@ -40,7 +40,7 @@ def getDailyNews(daily_change_data, json_news_data):
 
 def getInfoDict(ticker):                                                                                                      # Drew: add string input and
     testStockData = getStockData(ticker)
-    testCompanyName = getCompanyName(testStockData)
+    testCompanyName = getCompanyName(ticker)
     testNewsData = getNewsData(testCompanyName)
     dailyChange = getDailyChange(testStockData)
     return getDailyNews(dailyChange, testNewsData)
