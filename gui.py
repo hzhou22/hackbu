@@ -14,11 +14,11 @@ class predictButton(Button):
     def clicked(self, obj):
         print("Hello potato")
 
+class boxLayout
 
 class StockPredictorApp(App):
 
     def build(self):
-        return BoxLayout()
 
 
 stock_predictor = StockPredictorApp()
