@@ -71,8 +71,8 @@ class KeywordCollection:
     def getKeywords(self):
         return self.keywords
 
-    def articleValue(self):
-        
+    #def articleValue(self):
+
 
 
 class Keyword:
