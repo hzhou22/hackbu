@@ -108,7 +108,6 @@ class Keyword:
         self.appearances.append(value)
 
     def calculateWeight(self):
-<<<<<<< HEAD
         self.weight = sum(self.appearances)/len(self.appearances)
 
 
@@ -128,4 +127,3 @@ def main():
 #main()
 =======
         self.impact = sum(self.appearances) / len(self.appearances)
->>>>>>> 1c8123e0e8898dfeb683921c463ce06e21b64e29
