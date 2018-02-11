@@ -1,12 +1,14 @@
 import data
+import requests
 
 def main():
     apple = data.getStockData("AAPL")
-    print(apple)
+    #print(apple)
     appleName = data.getCompanyName("AAPL")
-    print(appleName)
+    #print(appleName)
     newsData = data.getNewsData(appleName)
-    print(newsData)
+    #print(newsData)
     asdf = data.getDailyChange(apple)
-    print(asdf)
+    #print(asdf)
+    print(data.getInfoDict("AAPL"))
 main()
