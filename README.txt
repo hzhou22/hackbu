@@ -1,0 +1,1 @@
+APIs Used: NewsAPI.org, Yahoo Finance, AlphaVantage.co
